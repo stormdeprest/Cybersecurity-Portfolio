@@ -3,8 +3,11 @@ Cybersecurity Administrator Student | Documenting my journey from student to pro
 
 
 **Author:** Storm De Prest
+
 **Location:** Belgium
+
 **Focus:** Network Security | Offensive Security | Defensive Security --> Building a strong foundation before I specialize
+
 **Status:** 🎓 Currently Learning (Started: September 2025)
 
 ## 👋 About Me
