@@ -2,6 +2,8 @@
 Cybersecurity Administrator Student | Documenting my journey from student to professional.
 
 
+
+
 **Author:** Storm De Prest
 
 **Location:** Belgium
