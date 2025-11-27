@@ -20,9 +20,9 @@ to cybersecurity professional.
 
 - **Study Time:** ~15 hours/week  
 - **THM Machines Completed:** 1+ (Blue, and growing)  
-- **Projects:** 1 major (Network Infrastructure)  
-- **Cheat Sheets Created:** 5+  
-- **Days Learning:** 15+
+- **Projects:** 1 major (Network Infrastructure Exam)  
+- **Study Sheets Created:** 10+  
+- **Days Learning:** 60+
 
 ## 🎯 Learning Path
 
