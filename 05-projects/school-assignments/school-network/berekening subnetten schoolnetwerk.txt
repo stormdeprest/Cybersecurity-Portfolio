@@ -1,0 +1,210 @@
+Soorten subnetten:
+- Grote klassen = 35 studenten
+- Kleine klassen = 25 studenten
+- 34 klaslokalen = 34 docenten
+- 34 klaslokalen = 34 badge lezers
+
+Grote klassen:
+- Nodig: 35 studenten = /26 --> 64 IP-adressen --> 62 bruikbare hosts
+- Subnetmasker: 255.255.255.192
+
+Docenten:
+- Nodig: 34 docenten = /26 --> 64 IP-adressen --> 62 bruikbare hosts
+- Subnetmasker: 255.255.255.192
+
+Badge lezers:
+- Nodig: 34 badge lezers = /26 --> 64 IP-adressen --> 62 bruikbare hosts
+- Subnetmasker: 255.255.255.192
+
+Kleine klassen:
+- Nodig: 25 studenten = /27 --> 32 IP-adressen --> 30 bruikbare hosts
+- Subnetmasker: 255.255.255.224
+
+Totaal aantal grote klassen: 4 --> 4 subnets
+Totaal aantal kleine klassen: 30 --> 30 subnets
+Totaal aantal docenten: 34 --> 1 subnet
+Totaal aantal badge lezers: 34 --> 1 subnet
+
+**Hoofdnetwerk: 172.16.0.0/12**
+
+**Grote klassen subnets:**
+1. Grote-klas0: VLAN ID 10
+  Netwerkadres: 172.16.0.0/26
+  Broadcastadres: 172.16.0.63
+  Default gateway: 172.16.0.1
+
+2. Grote-klas1: VLAN ID 11
+  Netwerkadres: 172.16.0.64/26
+  Broadcastadres: 172.16.0.127
+  Default gateway: 172.16.0.65
+
+3. Grote-klas2: VLAN ID 12
+  Netwerkadres: 172.16.0.128/26
+  Broadcastadres: 172.16.0.191
+  Default gateway: 172.16.0.129
+
+4. Grote-klas3: VLAN ID 13
+  Netwerkadres: 172.16.0.192/26
+  Broadcastadres: 172.16.0.255
+  Default gateway: 172.16.0.193
+
+**Docenten subnet: VLAN ID 20** 
+  Netwerkadres: 172.16.1.0/26
+  Broadcastadres: 172.16.1.63
+  Default gateway: 172.16.1.1
+
+**Badge lezers subnet: VLAN ID 30**
+  Netwerkadres: 172.16.1.64/26
+  Broadcastadres: 172.16.1.127
+  Default gateway: 172.16.1.65
+
+**Kleine klassen subnets:**
+1. Kleine-klas0: VLAN ID 100
+Netwerkadres: 172.16.1.128/27
+Broadcastadres: 172.16.1.159
+Default gateway: 172.16.1.129
+
+2. Kleine-klas1: VLAN ID 101
+Netwerkadres: 172.16.1.160/27
+Broadcastadres: 172.16.1.191
+Default gateway: 172.16.1.161
+
+3. Kleine-klas2: VLAN ID 102
+Netwerkadres: 172.16.1.192/27
+Broadcastadres: 172.16.1.223
+Default gateway: 172.16.1.193
+
+4. Kleine-klas3: VLAN ID 103
+Netwerkadres: 172.16.1.224/27
+Broadcastadres: 172.16.1.255
+Default gateway: 172.16.1.225
+
+5. Kleine-klas4: VLAN ID 104
+Netwerkadres: 172.16.2.0/27
+Broadcastadres: 172.16.2.31
+Default gateway: 172.16.2.1
+
+6. Kleine-klas5: VLAN ID 105
+Netwerkadres: 172.16.2.32/27
+Broadcastadres: 172.16.2.63
+Default gateway: 172.16.2.33
+
+7. Kleine-klas6: VLAN ID 106
+Netwerkadres: 172.16.2.64/27
+Broadcastadres: 172.16.2.95
+Default gateway: 172.16.2.65
+
+8. Kleine-klas7: VLAN ID 107
+Netwerkadres: 172.16.2.96/27
+Broadcastadres: 172.16.2.127
+Default gateway: 172.16.2.97
+
+9. Kleine-klas8: VLAN ID 108
+Netwerkadres: 172.16.2.128/27
+Broadcastadres: 172.16.2.159
+Default gateway: 172.16.2.129
+
+10. Kleine-klas9: VLAN ID 109
+Netwerkadres: 172.16.2.160/27
+Broadcastadres: 172.16.2.191
+Default gateway: 172.16.2.161
+
+11. Kleine-klas10: VLAN ID 110
+Netwerkadres: 172.16.2.192/27
+Broadcastadres: 172.16.2.223
+Default gateway: 172.16.2.193
+
+12. Kleine-klas11: VLAN ID 111
+Netwerkadres: 172.16.2.224/27
+Broadcastadres: 172.16.2.255
+Default gateway: 172.16.2.225
+
+13. Kleine-klas12: VLAN ID 112
+Netwerkadres: 172.16.3.0/27
+Broadcastadres: 172.16.3.31
+Default gateway: 172.16.3.1
+
+14. Kleine-klas13: VLAN ID 113
+Netwerkadres: 172.16.3.32/27
+Broadcastadres: 172.16.3.63
+Default gateway: 172.16.3.33
+
+15. Kleine-klas14: VLAN ID 114
+Netwerkadres: 172.16.3.64/27
+Broadcastadres: 172.16.3.95
+Default gateway: 172.16.3.65
+
+16. Kleine-klas15: VLAN ID 115
+Netwerkadres: 172.16.3.96/27
+Broadcastadres: 172.16.3.127
+Default gateway: 172.16.3.97
+
+17. Kleine-klas16: VLAN ID 116
+Netwerkadres: 172.16.3.128/27
+Broadcastadres: 172.16.3.159
+Default gateway: 172.16.3.129
+
+18. Kleine-klas17: VLAN ID 117
+Netwerkadres: 172.16.3.160/27
+Broadcastadres: 172.16.3.191
+Default gateway: 172.16.3.161
+
+19. Kleine-klas18: VLAN ID 118
+Netwerkadres: 172.16.3.192/27
+Broadcastadres: 172.16.3.223
+Default gateway: 172.16.3.193
+
+20. Kleine-klas19: VLAN ID 119
+Netwerkadres: 172.16.3.224/27
+Broadcastadres: 172.16.3.255
+Default gateway: 172.16.3.225
+
+21. Kleine-klas20: VLAN ID 120
+Netwerkadres: 172.16.4.0/27
+Broadcastadres: 172.16.4.31
+Default gateway: 172.16.4.1
+
+22. Kleine-klas21: VLAN ID 121
+Netwerkadres: 172.16.4.32/27
+Broadcastadres: 172.16.4.63
+Default gateway: 172.16.4.33
+
+23. Kleine-klas22: VLAN ID 122
+Netwerkadres: 172.16.4.64/27
+Broadcastadres: 172.16.4.95
+Default gateway: 172.16.4.65
+
+24. Kleine-klas23: VLAN ID 123
+Netwerkadres: 172.16.4.96/27
+Broadcastadres: 172.16.4.127
+Default gateway: 172.16.4.97
+
+25. Kleine-klas24: VLAN ID 124
+Netwerkadres: 172.16.4.128/27
+Broadcastadres: 172.16.4.159
+Default gateway: 172.16.4.129
+
+26. Kleine-klas25: VLAN ID 125
+Netwerkadres: 172.16.4.160/27
+Broadcastadres: 172.16.4.191
+Default gateway: 172.16.4.161
+
+27. Kleine-klas26: VLAN ID 126
+Netwerkadres: 172.16.4.192/27
+Broadcastadres: 172.16.4.223
+Default gateway: 172.16.4.193
+
+28. Kleine-klas27: VLAN ID 127
+Netwerkadres: 172.16.4.224/27
+Broadcastadres: 172.16.4.255
+Default gateway: 172.16.4.225
+
+29. Kleine-klas28: VLAN ID 128
+Netwerkadres: 172.16.5.0/27
+Broadcastadres: 172.16.5.31
+Default gateway: 172.16.5.1
+
+30. Kleine-klas29: VLAN ID 129
+Netwerkadres: 172.16.5.32/27
+Broadcastadres: 172.16.5.63
+Default gateway: 172.16.5.33

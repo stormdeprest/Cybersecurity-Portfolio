@@ -1,0 +1,34 @@
+Een school netwerk bouwen | Building a school network - phase 1
+
+Instructies
+Lees tot het einde!!!
+
+Je wordt gevraagd om een netwerk te ontwerpen en virtueel voor te stellen zodat de haalbaarheid getest kan worden. 
+Er word je het volgende gevraagd en je dient rekening te houden met de eisen van de klant zie bijlage het gebouw layout!:
+
+1. Zo efficiënt mogelijk om te gaan met private IP adressen zodat er niet te veel IP adressen verloren gaan!
+
+2. Geen gebruik maken van het klasse C private netwerk dus geen 192.168 adressen
+
+3. Eerst de berekening te maken van alle netwerken en een logische tekening te maken in draw.io zodat de studenten geïsoleerd blijven in hun netwerk (en vlan) maar de docenten naar alle VLANS kunnen 
+(btw: de docenten zitten allemaal in 1 netwerk en vlan en we hebben evenveel docenten als klaslokalen!), 
+normaal isoleren we dat met ACLs of een firewall maar dat hebben we nog niet gezien daarom mogen alle netwerken gerouteerd worden door de switch! 
+
+4. VLANS toe kennen aan alle netwerken zodat de docenten in elke klas kunnen inpluggen en in hun netwerk terecht kunnen voorzie hier 2 poorten per klas, dus ook per switch!
+
+5. Voor die aparte netwerken voor de studenten, zorg er ook voor de elke klas dus een aparte VLAN en netwerk heeft voor maximaal 25 studenten en de grootste klaslokalen, 35 studenten kunnen bedienen.
+
+6. Een apart netwerk te voorzien voor badge-lezers zodat alle lokalen kunnen afgesloten worden met een elektronisch slot, 
+je dient deze VLAN dus ook beschikbaar te maken op de switchen die voorzien zijn voor de lokalen, reserveer hier 1 poort per lokaal voor.
+
+7. Op de 3de en hoogste verdiep is het datacenter waar de klaslokaal switchen staan voorzien we 1 core switch waar de router en de klaslokaal switchen op aangesloten zijn  
+(we hebben nog geen redundant setup gezien dus dat is voor het vervolg project dus 1 core switch en 1 router voorzien :)).  
+
+8. Gebruik voor elke klas- en core-switch een switch met 48 poorten maar aangezien deze niet beschikbaar zijn in Packettracer, 
+gaan we per lokaal 2x2960 switchen gebruiken welke maar 24 POORTEN hebben, 
+dus maken we een trunk tussen beide switchen waarvan 1 van de twee switchen een uplink heeft naar de core switch welke uiteraard 
+ook uit 2 switchen bestaat die ook een trunk hebben tussen elkaar welke alle vlans bevat (hier gebruiken we geen allowed vlan lijst)!!!
+
+Deze punten tellen zeker mee!!!
+
+!!!Gelieve geen AI gebruiken, laat die grijze massa zelf hun werk doen!!!!

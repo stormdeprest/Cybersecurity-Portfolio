@@ -1,0 +1,668 @@
+# Schoolnetwerk configuraties switches en router
+
+## Switch configuraties
+
+**Switch voor Grote Klassen, die naar de distri switch gaat (bovenste vlan aanpassen adhv VLAN ID en naam klas)**
+enable
+configure terminal
+
+vlan 10
+ name Grote-klas0
+vlan 20
+ name Docenten
+vlan 30
+ name Badge-lezers
+
+interface vlan 10
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-18
+ switchport mode access
+ switchport access vlan 10
+
+interface fa0/19
+ switchport mode access
+ switchport access vlan 20
+
+interface fa0/20
+ switchport mode access
+ switchport access vlan 30
+
+interface gi0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+
+interface gi0/2
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+exit
+write memory
+
+------------------------
+
+**Switch voor Grote Klassen, die enkel naar andere switch gaat (bovenste vlan aanpassen adhv VLAN ID en naam klas)**
+enable
+configure terminal
+
+vlan 10
+ name Grote-klas0
+vlan 20
+ name Docenten
+vlan 30
+ name Badge-lezers
+
+interface vlan 10
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-18
+ switchport mode access
+ switchport access vlan 10
+
+interface fa0/19
+ switchport mode access
+ switchport access vlan 20
+
+interface gi0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+exit
+write memory
+
+------------------------
+
+**Switch voor Kleine Klassen, die naar de distri switch gaat (bovenste vlan aanpassen adhv VLAN ID en naam klas)**
+enable
+configure terminal
+
+vlan 100
+ name Kleine-klas0
+vlan 20
+ name Docenten
+vlan 30
+ name Badge-lezers
+
+interface vlan 100
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-13
+ switchport mode access
+ switchport access vlan 100
+
+interface fa0/14
+ switchport mode access
+ switchport access vlan 20
+
+interface fa0/15
+ switchport mode access
+ switchport access vlan 30
+
+interface gi0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 100,20,30
+
+interface gi0/2
+ switchport mode trunk
+ switchport trunk allowed vlan 100,20,30
+exit
+write memory
+
+------------------------
+
+**Switch voor Kleine Klassen, die enkel naar andere switch gaat (bovenste vlan aanpassen adhv VLAN ID en naam klas)**
+enable
+configure terminal
+
+vlan 100
+ name Kleine-klas0
+vlan 20
+ name Docenten
+vlan 30
+ name Badge-lezers
+
+interface vlan 100
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-13
+ switchport mode access
+ switchport access vlan 100
+
+interface fa0/14
+ switchport mode access
+ switchport access vlan 20
+
+interface gi0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 100,20,30
+exit
+write memory
+
+------------------------
+
+**Distributie Switch1 !gelijkvloers!, die naar de core switch gaat**
+enable
+configure terminal
+
+vlan 100-109
+ name Kleine-klassen
+vlan 20
+  name Docenten
+vlan 30
+  name Badge-lezers
+
+interface vlan 100
+interface vlan 101
+interface vlan 102
+interface vlan 103
+interface vlan 104
+interface vlan 105
+interface vlan 106
+interface vlan 107
+interface vlan 108
+interface vlan 109
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-5
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+ switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Distributie Switch0 !gelijkvloers!, die naar de andere switch gaat**
+enable
+configure terminal
+
+vlan 100-109
+ name Kleine-klassen
+vlan 20
+  name Docenten
+vlan 30
+  name Badge-lezers
+
+interface vlan 100
+interface vlan 101
+interface vlan 102
+interface vlan 103
+interface vlan 104
+interface vlan 105
+interface vlan 106
+interface vlan 107
+interface vlan 108
+interface vlan 109
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-5
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Distributie Switch3 !floor 1!, die naar de core switch gaat**
+enable
+configure terminal
+
+vlan 10
+ name Grote-klas0
+vlan 11
+ name Grote-klas1
+vlan 110-119
+ name Kleine-klassen
+vlan 20
+  name Docenten
+vlan 30
+  name Badge-lezers
+
+interface vlan 10
+interface vlan 11
+interface vlan 110
+interface vlan 111
+interface vlan 112
+interface vlan 113
+interface vlan 114
+interface vlan 115
+interface vlan 116
+interface vlan 117
+interface vlan 118
+interface vlan 119
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-6
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+ switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Distributie Switch2 !floor 1!, die naar de andere switch gaat**
+enable
+configure terminal
+
+vlan 10
+ name Grote-klas0
+vlan 11
+ name Grote-klas1
+vlan 110-119
+ name Kleine-klassen
+vlan 20
+  name Docenten
+vlan 30
+  name Badge-lezers
+
+interface vlan 10
+interface vlan 11
+interface vlan 110
+interface vlan 111
+interface vlan 112
+interface vlan 113
+interface vlan 114
+interface vlan 115
+interface vlan 116
+interface vlan 117
+interface vlan 118
+interface vlan 119
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-6
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Distributie Switch5 !floor 2!, die naar de core switch gaat**
+enable
+configure terminal
+
+vlan 12
+  name Grote-klas2
+vlan 13
+  name Grote-klas3
+vlan 120-129
+ name Kleine-klassen
+vlan 20
+  name Docenten
+vlan 30
+  name Badge-lezers
+
+interface vlan 12
+interface vlan 13
+interface vlan 120
+interface vlan 121
+interface vlan 122
+interface vlan 123
+interface vlan 124
+interface vlan 125
+interface vlan 126
+interface vlan 127
+interface vlan 128
+interface vlan 129
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-6
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+ switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Distributie Switch4 !floor 2!, die naar de andere switch gaat**
+enable
+configure terminal
+
+vlan 12
+  name Grote-klas2
+vlan 13
+  name Grote-klas3
+vlan 120-129
+ name Kleine-klassen
+vlan 20
+  name Docenten
+vlan 30
+  name Badge-lezers
+
+interface vlan 12
+interface vlan 13
+interface vlan 120
+interface vlan 121
+interface vlan 122
+interface vlan 123
+interface vlan 124
+interface vlan 125
+interface vlan 126
+interface vlan 127
+interface vlan 128
+interface vlan 129
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-6
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Core Switch0 die distrubutie switches verbindt**
+enable
+configure terminal
+
+vlan 10-13
+ name Grote-klassen
+vlan 100-129
+ name Kleine-klassen
+vlan 20
+ name Docenten
+vlan 30
+ name Badge-lezers
+
+interface vlan 10
+interface vlan 11
+interface vlan 12
+interface vlan 13
+interface vlan 100
+interface vlan 101
+interface vlan 102
+interface vlan 103
+interface vlan 104
+interface vlan 105
+interface vlan 106
+interface vlan 107
+interface vlan 108
+interface vlan 109
+interface vlan 110
+interface vlan 111
+interface vlan 112
+interface vlan 113
+interface vlan 114
+interface vlan 115
+interface vlan 116
+interface vlan 117
+interface vlan 118
+interface vlan 119
+interface vlan 120
+interface vlan 121
+interface vlan 122
+interface vlan 123
+interface vlan 124
+interface vlan 125
+interface vlan 126
+interface vlan 127
+interface vlan 128
+interface vlan 129
+interface vlan 20
+interface vlan 30
+exit
+
+interface range fa0/1-2
+ switchport mode trunk
+
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+  switchport mode trunk
+exit
+write memory
+
+------------------------
+
+**Core switch1 die router verbindt**
+enable
+configure terminal
+
+vlan 10-13
+ name Grote-klassen
+vlan 100-129
+ name Kleine-klassen
+vlan 20
+ name Docenten
+vlan 30
+ name Badge-lezers
+
+interface vlan 10
+interface vlan 11
+interface vlan 12
+interface vlan 13
+interface vlan 100
+interface vlan 101
+interface vlan 102
+interface vlan 103
+interface vlan 104
+interface vlan 105
+interface vlan 106
+interface vlan 107
+interface vlan 108
+interface vlan 109
+interface vlan 110
+interface vlan 111
+interface vlan 112
+interface vlan 113
+interface vlan 114
+interface vlan 115
+interface vlan 116
+interface vlan 117
+interface vlan 118
+interface vlan 119
+interface vlan 120
+interface vlan 121
+interface vlan 122
+interface vlan 123
+interface vlan 124
+interface vlan 125
+interface vlan 126
+interface vlan 127
+interface vlan 128
+interface vlan 129
+interface vlan 20
+interface vlan 30
+exit
+
+interface gi0/1
+ switchport mode trunk
+interface gi0/2
+  switchport mode trunk
+exit
+write memory
+
+------------------------
+
+## Router configuratie voor inter-VLAN routing
+enable
+configure terminal
+
+ip routing
+
+interface g0/0/0
+ no shutdown
+ 
+interface g0/0/0.10
+ encapsulation dot1Q 10
+ ip address 172.16.0.1 255.255.255.192
+
+interface g0/0/0.11
+  encapsulation dot1Q 11
+  ip address 172.16.0.65 255.255.255.192
+
+interface g0/0/0.12
+ encapsulation dot1Q 12
+  ip address 172.16.0.129 255.255.255.192
+
+interface g0/0/0.13
+  encapsulation dot1Q 13
+  ip address 172.16.0.193 255.255.255.192
+
+interface g0/0/0.20
+  encapsulation dot1Q 20
+  ip address 172.16.1.1 255.255.255.192
+
+interface g0/0/0.30
+  encapsulation dot1Q 30
+  ip address 172.16.1.65 255.255.255.192
+
+interface g0/0/0.100
+  encapsulation dot1Q 100
+  ip address 172.16.1.129 255.255.255.224
+
+interface g0/0/0.101
+  encapsulation dot1Q 101
+  ip address 172.16.1.161 255.255.255.224
+
+interface g0/0/0.102
+  encapsulation dot1Q 102
+  ip address 172.16.1.193 255.255.255.224
+
+interface g0/0/0.103
+  encapsulation dot1Q 103
+  ip address 172.16.1.225 255.255.255.224
+
+interface g0/0/0.104
+  encapsulation dot1Q 104
+  ip address 172.16.2.1 255.255.255.224
+
+interface g0/0/0.105
+  encapsulation dot1Q 105
+  ip address 172.16.2.33 255.255.255.224
+
+interface g0/0/0.106
+  encapsulation dot1Q 106
+  ip address 172.16.2.65 255.255.255.224
+
+interface g0/0/0.107
+  encapsulation dot1Q 107
+  ip address 172.16.2.97 255.255.255.224
+
+interface g0/0/0.108
+  encapsulation dot1Q 108
+  ip address 172.16.2.129 255.255.255.224
+
+interface g0/0/0.109
+  encapsulation dot1Q 109
+  ip address 172.16.2.161 255.255.255.224
+
+interface g0/0/0.110
+  encapsulation dot1Q 110
+  ip address 172.16.2.193 255.255.255.224
+
+interface g0/0/0.111
+  encapsulation dot1Q 111
+  ip address 172.16.2.225 255.255.255.224
+
+interface g0/0/0.112
+  encapsulation dot1Q 112
+  ip address 172.16.3.1 255.255.255.224
+
+interface g0/0/0.113
+  encapsulation dot1Q 113
+  ip address 172.16.3.33 255.255.255.224
+
+interface g0/0/0.114
+  encapsulation dot1Q 114
+  ip address 172.16.3.65 255.255.255.224
+
+interface g0/0/0.115
+  encapsulation dot1Q 115
+  ip address 172.16.3.97 255.255.255.224
+
+interface g0/0/0.116
+  encapsulation dot1Q 116
+  ip address 172.16.3.129 255.255.255.224
+
+interface g0/0/0.117
+  encapsulation dot1Q 117
+  ip address 172.16.3.161 255.255.255.224
+
+interface g0/0/0.118
+  encapsulation dot1Q 118
+  ip address 172.16.3.193 255.255.255.224
+
+interface g0/0/0.119
+  encapsulation dot1Q 119
+  ip address 172.16.3.225 255.255.255.224
+
+interface g0/0/0.120
+  encapsulation dot1Q 120
+  ip address 172.16.4.1 255.255.255.224
+
+interface g0/0/0.121
+  encapsulation dot1Q 121
+  ip address 172.16.4.33 255.255.255.224
+
+interface g0/0/0.122
+  encapsulation dot1Q 122
+  ip address 172.16.4.65 255.255.255.224
+
+interface g0/0/0.123
+  encapsulation dot1Q 123
+  ip address 172.16.4.97 255.255.255.224
+
+interface g0/0/0.124
+  encapsulation dot1Q 124
+  ip address 172.16.4.129 255.255.255.224
+
+interface g0/0/0.125
+  encapsulation dot1Q 125
+  ip address 172.16.4.161 255.255.255.224
+
+interface g0/0/0.126
+  encapsulation dot1Q 126
+  ip address 172.16.4.193 255.255.255.224
+
+interface g0/0/0.127
+  encapsulation dot1Q 127
+  ip address 172.16.4.225 255.255.255.224
+
+interface g0/0/0.128
+  encapsulation dot1Q 128
+  ip address 172.16.5.1 255.255.255.224
+
+interface g0/0/0.129
+  encapsulation dot1Q 129
+  ip address 172.16.5.33 255.255.255.224
+exit
+write memory
+
+------------------------
+
